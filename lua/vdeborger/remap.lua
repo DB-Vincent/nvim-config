@@ -27,12 +27,14 @@ vim.keymap.set("x", "<leader>p", [["_dP]]) -- Paste over selected text without o
 vim.keymap.set({"n", "v"}, "<leader>d", [["_d]]) -- Delete selected text without overwriting register
 
 -- Buffers (tabs)
-vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>", { silent = true })
-vim.keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", { silent = true })
-vim.keymap.set("n", "<leader>q", ":bdelete<CR>", { silent = true })
-vim.keymap.set("n", "<leader>Q", ":BufferLineCloseLeft<CR>:BufferLineCloseRight<CR>", { silent = true })
+vim.keymap.set("n", "<Tab>", "<Cmd>BufferNext<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<S-Tab>", "<Cmd>BufferPrevious<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>q", "<Cmd>BufferClose<CR>", { noremap = true, silent = true })
 
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format) -- Format current buffer using LSP
+
+-- Tmux
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>") -- New session
 
 -- Reload current file
 vim.keymap.set("n", "<leader><leader>", function()
